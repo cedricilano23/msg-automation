@@ -15,6 +15,7 @@ This repository contains an automated testing framework for web and API testing 
 2. Install dependencies:
 
 ```bash
+cd <project-directory>
 npm install
 ```
 
@@ -82,19 +83,27 @@ npm run allure:open
 - **TypeScript**: Type-safe test automation
 - **Custom Helpers**: Reusable test functions
 
-## Test Types
+## Test Types / Cases
 
 ### Web UI Tests
 - Login functionality
+- Logout Functionality
 - Product browsing and sorting
 - Cart operations
 - Checkout process
+- Removing items from cart
+- Viewing item details
+- Error handling
+
 
 ### API Tests
 - User data retrieval
 - User creation and updates
 - Response validation
 - Performance testing with delays
+- Error handling
+- Data validation
+- Single user and multiple users retrieval
 
 ## Configuration
 
@@ -102,4 +111,6 @@ The framework is configured to run against:
 - Web UI: https://www.saucedemo.com
 - API: https://reqres.in/
 
+## Conclusion
+API and Web UI Tests are implemented in this project. I chose to create a single repository for both automated tests (Web and API) for the sake of simplicity and organization. Configuration for both can be found in a single file. 
 Tests run in Chromium with video recording enabled.

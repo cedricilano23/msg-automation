@@ -14,6 +14,27 @@ Scenario('Should get list of available users and print odd ID users', async ({ I
   I.assertEqual(response.status, httpStatus.OK);
 });
 
+Scenario('Should get a single user by ID', async ({ I }) => {
+  const userId = 2;
+  const response = await I.sendGetRequest(`api/users/${userId}`);
+  I.assertEqual(response.status, httpStatus.OK);
+  I.assertEqual(response.data.data.id, userId);
+});
+
+Scenario('Should be able to delete a user', async ({ I }) => {
+  const userId = 2;
+  const userData = {
+    name: 'DeleteTest User',
+    job: 'testing'
+  };
+  
+  const createResponse = await I.sendPostRequest('api/users', userData);
+  const response = await I.sendDeleteRequest(`api/users/${userId}`);
+
+  I.assertEqual(createResponse.status, httpStatus.CREATED);
+  I.assertEqual(response.status, httpStatus.NO_CONTENT);
+});
+
 Scenario('Should create a new user and verify date', async ({ I }) => {
   const userData = {
     name: 'Test User',
@@ -58,3 +79,5 @@ Data(delays).Scenario('Should list users with delay', async ({ I, current }) => 
   I.assertEqual(response.status, httpStatus.OK);
   I.assertTrue(responseTime < 1);
 });
+
+
